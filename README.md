@@ -111,6 +111,43 @@ El atributo `_id`: Automático para mongo si el usuario no inserta alguno.
  
  ```
  
+ Ordenar los datos:
+ 
+ ```javascript
+ 
+ ```
+ 
+ Limitar los resultados:
+  ```javascript
+ 
+ ```
+ 
+ Más criterios de búsqueda:
+  ```javascript
+ 
+ ```
+ 
+ Mayor que:
+  ```javascript
+ 
+ ```
+ Menor que:
+  ```javascript
+ 
+ ```
+ 
+ Mayor o igual que:
+  ```javascript
+ 
+ ```
+ 
+ Menor o igual que:
+  ```javascript
+ 
+ ```
+ 
+ 
+ 
 ## Borrar datos:
 
 ## Eliminar primera ocurrencia:

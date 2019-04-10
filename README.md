@@ -25,7 +25,7 @@ El siguiente comando muestra el listado de los nombres de las collecciones dentr
 
 ```javascript
 
-db.getCollectionNamess()
+db.getCollectionNames()
 
 ```
 
@@ -35,7 +35,40 @@ db.getCollectionNamess()
 
 Para un único dato:
 
+```javascript
+
+var obj = {
+ 'id': 'galaxy'
+};
+
+db.products.insertOne(obj);
+       
+```
+Otros parámetros que recibe esta función, [referencia](https://docs.mongodb.com/manual/reference/method/db.collection.insertOne/).
+
+Si el nombre de la colleción no existe, mongo crea la colleción e inserta el documento.
+
+Considerando el manejo de errores como funciones auxiliares:
+
+```javascript
+try {
+   db.products.insertOne( { item: "card", qty: 15 } );
+} catch (e) {
+   print (e);
+};
+
+
+```
+
+
 Para varios datos:
+
+```javascript
+db.products.insertOne( obj, <optional params> ) 
+        
+
+
+```
 
 El atributo `_id`:
 
@@ -46,6 +79,18 @@ El atributo `_id`:
  
 ## Borrar datos:
 
+## Eliminar primera ocurrencia:
+
+```javascript
+
+```
+
+## Eliminar varios documentos:
+
+
+```javascript
+
+```
 
 ## Funciones de agregación:
  

@@ -46,7 +46,23 @@ db.products.insertOne(obj);
 ```
 Otros parámetros que recibe esta función, [referencia](https://docs.mongodb.com/manual/reference/method/db.collection.insertOne/).
 
-Si el nombre de la colleción no existe, mongo crea la colleción e inserta el documento.
+<div style="visibility: hidden; 
+  min-width: 250px; 
+  margin-left: -125px; 
+  background-color: #333;
+  color: #fff; 
+  text-align: center; 
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed; 
+  left: 50%; 
+  bottom: 30px; "> 
+  
+
+  Si el nombre de la colleción no existe, mongo crea la colleción e inserta el documento.  
+ </div>
+
+
 
 Considerando el manejo de errores como funciones auxiliares:
 

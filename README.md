@@ -12,6 +12,7 @@ Para hacer referencia a la base de datos en específico se utiliza el objecto ` 
 ```javascript
 use database_name
 ```
+La operación anterior permite crear una nueva base de datos con el nombre dado.
 
 ## Crear colección
 ```javascript
@@ -111,48 +112,106 @@ El atributo `_id`: Automático para mongo si el usuario no inserta alguno.
  
  ```
  
- Ordenar los datos:
+ Ordenar los datos: Dada una búsqueda mongo permite ordenar los valores bajo una serie de criterios.
+ 
+ ```javascript
+ db.products.find().sort({_id: -1})
+ 
+ ```
+ 
+ Limitar los resultados: Permite limitar la cantidad de resultados a un valor máximo esperado.
+  ```javascript
+ db.products.find().sort({_id: -1}).limit(2)
+
+ ```
+ 
+ Más criterios de búsqueda: Los comandos anteriores permiten realizar búsquedas sobre valores que son exactamente iguales a los criterios de búsqueda. Mongo ofrece otras alternativas para mostrar datos bajo criterios más complejos.
+ 
+ 
+ Mayor que: Este forma permite buscar documentos cuyo atributo sea mayor que un parámetro dado.
+  ```javascript
+ db.products.find({_id:{$gt: 1000}})
+ ```
+
+Otras formas de búsqueda:
+* Igual: `$eq`
+* Mayor que: `$gt`
+* Mayor o igual que: `$gte`
+* Menor que: `$lt`
+* Menor o igual que: `$lte`
+* Not equal: `$ne`
+* In: `$in`, es utilizado para encontrar datos dentro arreglos:
+```javascript
+db.products.find({comments: { $in : ['ok','not cool'] }   })
+
+```
+
+Operadores lógicos:
+* AND
+* OR
+* NOT
+* NOR
+Ejemplo:`
+```javascript
+ db.products.find({$or: [ {qty:15 },{qty: {$lt:21}} ] }).sort({qty:-1})
+
+```
+
+
+
+
+## Actualizar datos
+
+Función *save*, actualiza un documento si ya existe el `_id` proporcionado. Esta operación sobre escribe todo el documento.
+```javascript
+
+db.products.save({
+    _id: 890,
+    nombre: "Portátil Lenovo",
+    cantidad: 25,
+    precio: 750
+})
+
+
+
+```
+Función `update` actualiza si encuentra datos con el criterio de búsqueda dado:  
+```javascript
+
+db.products.update({
+    _id: ObjectId("51e64cd2403754f2073712da")
+},
+{
+   
+        cantidad: 35,
+        precio: 60
+
+})
+
+```
+
+La función set nos permite actualizar sólo los datos especificados, todos aquellos que no se mencionen no tendrán modificación alguna. 
  
  ```javascript
  
- ```
- 
- Limitar los resultados:
-  ```javascript
- 
- ```
- 
- Más criterios de búsqueda:
-  ```javascript
- 
- ```
- 
- Mayor que:
-  ```javascript
- 
- ```
- Menor que:
-  ```javascript
- 
- ```
- 
- Mayor o igual que:
-  ```javascript
- 
- ```
- 
- Menor o igual que:
-  ```javascript
- 
- ```
- 
- 
- 
+db.products.update({
+    _id: ObjectId("51e64cd2403754f2073712da")
+},
+{
+    $set: {
+        cantidad: 35,
+        precio: 60
+    }
+})
+
+
+```
 ## Borrar datos:
 
 ## Eliminar primera ocurrencia:
 
 ```javascript
+db.collection.remove( { query } );
 
 ```
 
@@ -160,6 +219,8 @@ El atributo `_id`: Automático para mongo si el usuario no inserta alguno.
 
 
 ```javascript
+db.collection.remove( { } );
+
 
 ```
 

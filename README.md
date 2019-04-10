@@ -46,7 +46,7 @@ db.products.insertOne(obj);
 ```
 Otros parámetros que recibe esta función, [referencia](https://docs.mongodb.com/manual/reference/method/db.collection.insertOne/).
 
-<div style="visibility: hidden; 
+<div style="
   min-width: 250px; 
   margin-left: -125px; 
   background-color: #333;

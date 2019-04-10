@@ -47,8 +47,7 @@ db.products.insertOne(obj);
 Otros parámetros que recibe esta función, [referencia](https://docs.mongodb.com/manual/reference/method/db.collection.insertOne/).
 
 
-
-  Si el nombre de la colleción no existe, mongo crea la colleción e inserta el documento.  
+> Si el nombre de la colleción no existe, mongo crea la colleción e inserta el documento.  
  
 
 
@@ -69,18 +68,48 @@ try {
 Para varios datos:
 
 ```javascript
-db.products.insertOne( obj, <optional params> ) 
+ var myobj = [
+    { name: 'John', address: 'Highway 71'},
+    { name: 'Peter', address: 'Lowstreet 4'},
+    { name: 'Amy', address: 'Apple st 652'},
+    { name: 'Hannah', address: 'Mountain 21'},
+    { name: 'Michael', address: 'Valley 345'},
+    { name: 'Sandy', address: 'Ocean blvd 2'},
+    { name: 'Betty', address: 'Green Grass 1'},
+    { name: 'Richard', address: 'Sky st 331'},
+    { name: 'Susan', address: 'One way 98'},
+    { name: 'Vicky', address: 'Yellow Garden 2'},
+    { name: 'Ben', address: 'Park Lane 38'},
+    { name: 'William', address: 'Central st 954'},
+    { name: 'Chuck', address: 'Main Road 989'},
+    { name: 'Viola', address: 'Sideway 1633'}
+  ];
+db.clients.insertMany( myobj, <optional params> ) 
         
 
 
 ```
 
-El atributo `_id`:
+El atributo `_id`: Automático para mongo si el usuario no inserta alguno.
 
 ## Buscar datos:
- Buscar un dato:
+ Buscar un dato: El siguiente comando retorna la primera ocurrencia del parámetro de búsqueda:
  
+ ```javascript
+  db.products.findOne({});
+ ```
+ 
+ Búsqueda con condiciones de selección:
+ Se definen los atributos que deben de contener los documentos a encontrar.
+  ```javascript
+  db.products.findOne({ '_id':123 });
+ ```
  Buscar varios datos:
+ 
+ ```javascript
+ db.products.find({},{'_id':1})
+ 
+ ```
  
 ## Borrar datos:
 

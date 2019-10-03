@@ -7,7 +7,7 @@ show dbs
 ```
 ## Usar una base de datos: 
 
-Para hacer referencia a la base de datos en específico se utiliza el objecto ` db `
+Para hacer referencia a la base de datos en específico se utiliza el objecto ` db `, además esto nos permite crear una nueva y usarla.
 
 ```javascript
 use database_name
